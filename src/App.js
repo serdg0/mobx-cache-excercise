@@ -10,11 +10,14 @@ const App = () => {
 
   useEffect(() => {
     const url = `https://pokeapi.co/api/v2/pokemon/${store.count}`;
-    
+
     axios.get(url)
       .then(res => {
         const { data: { sprites: { other } } } = res;
-        setSprite(other["official-artwork"]["front_default"]);
+        const sprite = other["official-artwork"]["front_default"];
+        const cachedPokemon = store.cache(store.count, sprite);
+
+        setSprite(cachedPokemon);
       });
   }, [store.count]);
 

@@ -15,6 +15,14 @@ const CreateCountStore = () => {
                 this.count--;
             }
         },
+        cache(id, sprite){
+            
+            if (this.pokemons[id] === undefined) {
+                pokemons[id] = sprite;
+            };
+            console.log(this.pokemons[id])
+            return this.pokemons[id];
+        }
     }
 };
 
