@@ -1,6 +1,8 @@
+import { observable } from "mobx";
+
 const CreateCountStore = () => {
     let count = 1;
-    let pokemons = {};
+    let pokemons = observable.map({});
 
     return {
         count,
@@ -16,11 +18,7 @@ const CreateCountStore = () => {
             }
         },
         cache(id, sprite){
-            
-            if (this.pokemons[id] === undefined) {
-                pokemons[id] = sprite;
-            };
-            console.log(this.pokemons[id])
+            this.pokemons[id] = sprite;
             return this.pokemons[id];
         }
     }
